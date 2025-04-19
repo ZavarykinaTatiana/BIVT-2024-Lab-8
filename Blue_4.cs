@@ -28,22 +28,17 @@ namespace Lab_8
             int current = 0;
             while (current < Input.Length)
             {
-                // Пропускаем не-цифры
                 while (current < Input.Length && !char.IsDigit(Input[current]))
                 {
                     current++;
                 }
                 if (current >= Input.Length) break;
 
-                // Находим начало числа
                 int numberStart = current;
-                // Находим конец числа
                 while (current < Input.Length && char.IsDigit(Input[current]))
                 {
                     current++;
                 }
-
-                // Если нашли число
                 if (numberStart < current)
                 {
                     string numberStr = Input.Substring(numberStart, current - numberStart);

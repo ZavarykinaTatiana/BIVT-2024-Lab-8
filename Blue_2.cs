@@ -132,10 +132,6 @@ namespace Lab_8
             _output = result.Trim();
         }
 
-        /// <summary>
-        /// Переопределение метода ToString
-        /// </summary>
-        /// <returns>Результирующий текст или null, если текст пуст</returns>
         public override string ToString()
         {
             return string.IsNullOrEmpty(_output) ? string.Empty : _output;
