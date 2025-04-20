@@ -17,22 +17,17 @@ namespace Lab_8
         // методы
         public override void Review()
         {
-            var words = Input.Split(' ');
+            var words = Input.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             string[] lines = new string[0];
             var currentLine = "";
             int linesCount = 0;
             foreach (var word in words)
             {
-                if (currentLine.Length + word.Length <= 49) { currentLine += (currentLine == "" ? "" : " ") + word; }
+                if (currentLine.Length == 0) currentLine = word;
+                else if (currentLine.Length + word.Length + 1 <= 50) { currentLine += " " + word; }
                 else {
-                    if (currentLine != "")
-                    {
-                        if (linesCount >= lines.Length)
-                        {
-                            Array.Resize(ref lines, lines.Length + 1);
-                        }
-                        lines[linesCount++] = currentLine;
-                    }
+                    if (linesCount >= lines.Length) { Array.Resize(ref lines, lines.Length + 1); }
+                    lines[linesCount++] = currentLine;
                     currentLine = word;
                 }
             }

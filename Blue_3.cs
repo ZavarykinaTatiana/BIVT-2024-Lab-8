@@ -14,18 +14,12 @@ namespace Lab_8
         // конструктор
         public Blue_3(string input) : base(input)
         {
-            _output = Array.Empty<(char, double)>();
+            _output = new (char, double)[0];
         }
 
         // методы
         public override void Review()
         {
-            if (string.IsNullOrEmpty(Input))
-            {
-                _output = Array.Empty<(char, double)>();
-                return;
-            }
-
             char[] punctuation = { ' ', '.', '!', '?', ',', ':', '\"', ';', '–', '(', ')', '[', ']', '{', '}', '/' };
             string[] words = Input.Split(punctuation, StringSplitOptions.RemoveEmptyEntries);
             
@@ -40,7 +34,7 @@ namespace Lab_8
                 char firstLetter = char.ToLower(word[0]);
                 if (char.IsLetter(firstLetter))
                 {
-                    int index = firstLetter;
+                    int index = (int)firstLetter;
                     letterCounts[index]++;
                     usedLetters[index] = true;
                     totalWords++;
@@ -67,7 +61,13 @@ namespace Lab_8
 
         public override string ToString()
         {
-            return string.Join("\n", _output.Select(x => $"{x.letter} - {x.percent.ToString("F4", System.Globalization.CultureInfo.GetCultureInfo("ru-RU"))}"));
+            string answer = "";
+            for (int i = 0; i < _output.Length; i++)
+            {
+                answer += $"{_output[i].letter} - {_output[i].percent:f4}";
+                if (i != _output.Length - 1) answer += "\n";
+            }
+            return answer;
         }
     }
 }
