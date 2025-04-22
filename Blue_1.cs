@@ -12,11 +12,12 @@ namespace Lab_8
         public string[] Output => _output;
 
         // конструктор
-        public Blue_1(string input) : base(input) { _output = new string[0]; }
+        public Blue_1(string input) : base(input) { _output = null; }
         
         // методы
         public override void Review()
         {
+            if (Input == null) return;
             var words = Input.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             string[] lines = new string[0];
             var currentLine = "";
@@ -45,6 +46,7 @@ namespace Lab_8
         }
         public override string ToString()
         {
+            if (_output == null) return null;
             return string.Join(Environment.NewLine, _output);
         }
     }
