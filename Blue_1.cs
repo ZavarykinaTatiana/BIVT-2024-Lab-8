@@ -45,7 +45,7 @@ namespace Lab_8
         }
         public override string ToString()
         {
-            return string.Join("\n", _output);
+            return string.Join(Environment.NewLine, _output);
         }
     }
 }

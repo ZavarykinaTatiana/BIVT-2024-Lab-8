@@ -65,7 +65,7 @@ namespace Lab_8
             for (int i = 0; i < _output.Length; i++)
             {
                 answer += $"{_output[i].letter} - {_output[i].percent:f4}";
-                if (i != _output.Length - 1) answer += "\n";
+                if (i != _output.Length - 1) answer += Environment.NewLine;
             }
             return answer;
         }
