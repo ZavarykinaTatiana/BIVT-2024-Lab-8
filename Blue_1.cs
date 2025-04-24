@@ -17,7 +17,10 @@ namespace Lab_8
         // методы
         public override void Review()
         {
-            if (Input == null) return;
+            if (string.IsNullOrEmpty(Input)) {
+                _output = null;
+                return;
+            }
             var words = Input.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             string[] lines = new string[0];
             var currentLine = "";
@@ -46,7 +49,7 @@ namespace Lab_8
         }
         public override string ToString()
         {
-            if (_output == null) return null;
+            if (_output == null || _output.Length == 0) return null;
             return string.Join(Environment.NewLine, _output);
         }
     }
