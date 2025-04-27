@@ -14,7 +14,7 @@ namespace Lab_8
         // конструктор
         public Blue_3(string input) : base(input)
         {
-            _output = new (char, double)[0];
+            _output = null;
         }
 
         // методы
